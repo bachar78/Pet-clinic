@@ -12,6 +12,7 @@ public class Visit extends BaseEntity {
         return date;
     }
 
+
     public void setDate(LocalDate date) {
         this.date = date;
     }
