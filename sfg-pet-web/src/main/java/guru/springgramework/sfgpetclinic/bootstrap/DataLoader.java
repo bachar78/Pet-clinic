@@ -12,13 +12,12 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
-
     private final PetTypeService petTypeService;
-
     private final SpecialtiesService specialtiesService;
     private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService, VisitService visitService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialtiesService specialtiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
@@ -40,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
         PetType savedDogType = petTypeService.save(dog);
 
         PetType cat = new PetType();
-        dog.setName("Cat");
+        cat.setName("Cat");
         PetType savedCatType = petTypeService.save(cat);
 
         Speciality radiology = new Speciality();
@@ -48,11 +47,11 @@ public class DataLoader implements CommandLineRunner {
         Speciality savedRadiology = specialtiesService.save(radiology);
 
         Speciality surgery = new Speciality();
-        radiology.setDescription("Surgery");
+        surgery.setDescription("Surgery");
         Speciality savedSurgery = specialtiesService.save(surgery);
 
         Speciality dentistry = new Speciality();
-        radiology.setDescription("Dentistry");
+        dentistry.setDescription("Dentistry");
         Speciality savedDentistry = specialtiesService.save(dentistry);
 
         Owner owner1 = new Owner();
@@ -101,6 +100,7 @@ public class DataLoader implements CommandLineRunner {
         vet2.setLastName("Azure");
         vet2.getSpecialities().add(savedSurgery);
         vetService.save(vet2);
+        vet2.getSpecialities().add(savedDentistry);
         System.out.println("Loaded vets......");
     }
 }

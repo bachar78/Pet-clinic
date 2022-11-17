@@ -24,5 +24,4 @@ public class ownersController {
     public String findOwners() {
         return "notImplemented";
     }
-
 }

@@ -6,11 +6,13 @@ import guru.springgramework.sfgpetclinic.model.Pet;
 import guru.springgramework.sfgpetclinic.services.OwnerService;
 import guru.springgramework.sfgpetclinic.services.PetService;
 import guru.springgramework.sfgpetclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;
@@ -22,6 +24,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
+    @Profile({"default", "map"})
     public Set<Owner> findAll() {
         return super.findAll();
     }
@@ -49,6 +52,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                     }
                 });
             }
+            System.out.println("=======================================");
             return super.save(object);
         } else {
             return null;
