@@ -66,11 +66,13 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public void deleteById(Long id) {
-        super.findById(id);
+        super.deleteById(id);
     }
 
     @Override
     public Owner findByLstName(String lastName) {
-        return null;
+        return this.findAll().stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst().orElse(null);
     }
 }
