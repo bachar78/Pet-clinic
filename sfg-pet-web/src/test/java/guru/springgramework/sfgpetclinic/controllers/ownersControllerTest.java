@@ -41,7 +41,7 @@ class ownersControllerTest {
         owners = new HashSet<>();
         owners.add(Owner.builder().id(1l).build());
         owners.add(Owner.builder().id(2l).build());
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
     @Test
